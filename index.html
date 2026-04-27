@@ -252,6 +252,115 @@
             border: 1px solid rgba(168, 85, 247, 0.2);
         }
 
+        /* Header superior nos cards */
+        .portfolio-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(124, 58, 237, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            z-index: 20;
+        }
+
+        .portfolio-header h3 {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+        }
+
+        /* Overlay inferior ao hover */
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(124, 58, 237, 0.88),
+                    rgba(124, 58, 237, 0.15),
+                    transparent);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.45s ease;
+            padding-bottom: 20px;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay span {
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            padding: 10px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 999px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Zoom imagem */
+        .portfolio-item img {
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Modal futurista animado */
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.82) translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes modalFadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.82) translateY(40px);
+            }
+        }
+
+        .modal-enter {
+            animation: modalFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .modal-exit {
+            animation: modalFadeOut 0.35s ease forwards;
+        }
+
+        #portfolioModal {
+            backdrop-filter: blur(8px);
+        }
+
+        #portfolioModal .modal-content {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            box-shadow:
+                0 25px 60px rgba(124, 58, 237, 0.25),
+                0 0 35px rgba(168, 85, 247, 0.15);
+            border-radius: 28px;
+        }
+
         /* Logos clientes */
         .client-logo div {
             background: rgba(255, 255, 255, 0.6) !important;
@@ -470,10 +579,22 @@
                 <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
                     onclick="openModal(this)"
                     data-title="Sistema de Chamados para Maqueiros - Hospital Geral Roberto Santos"
-                    data-description="Desenvolvido exclusivamente para otimizar a logística interna do hospital, o sistema permite o gerenciamento ágil e organizado dos chamados de transporte de pacientes. Com interface intuitiva e acessível em toda a rede interna, a solução proporciona mais eficiência, controle e agilidade no fluxo hospitalar, contribuindo diretamente para a qualidade do atendimento no Hospital Geral Roberto Santos."
+                    data-description="Desenvolvido exclusivamente para otimizar a logística interna do hospital..."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/maqueiro.jpg">
+
+                    <!-- Título superior -->
+                    <div class="portfolio-header">
+                        <h3>Sistema de Chamados para Maqueiros</h3>
+                    </div>
+
+                    <!-- Imagem -->
                     <img src="assets/img/maqueiro.jpg" alt="Sistema Chamados de Maqueiros"
                         class="w-full h-64 object-cover">
+
+                    <!-- Overlay hover -->
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 2 -->
@@ -481,7 +602,16 @@
                     onclick="openModal(this)" data-title="Sistema de Rouparia - Hospital Geral Roberto Santos"
                     data-description="Sistema desenvolvido para gerenciar de forma eficiente o controle e a distribuição de roupas hospitalares e materiais de lavanderia. Com funcionalidades que facilitam o cadastro, o acompanhamento de entregas e o controle de estoque, a solução contribui para a organização e agilidade dos processos internos, garantindo a disponibilidade e qualidade dos insumos para o Hospital Geral Roberto Santos."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/rouparia.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Sistema de Rouparia</h3>
+                    </div>
+
                     <img src="assets/img/rouparia.jpg" alt="Sistema de Rouparia" class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 3 -->
@@ -489,7 +619,16 @@
                     onclick="openModal(this)" data-title="Intranet Corporativa - Hospital Geral Roberto Santos"
                     data-description="Plataforma interna para comunicação e gestão de documentos desenvolvida para o Hospital Geral Roberto Santos."
                     data-tech="Tecnologias: WordPress" data-img="assets/img/intranet.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Intranet Corporativa</h3>
+                    </div>
+
                     <img src="assets/img/intranet.jpg" alt="Intranet Corporativa" class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 4 -->
@@ -497,7 +636,16 @@
                     onclick="openModal(this)" data-title="Sistema de Cadastro Único - Hospital Geral Roberto Santos"
                     data-description="Plataforma integrada para o cadastro e gerenciamento centralizado de pacientes e colaboradores, facilitando o acesso rápido e seguro às informações essenciais. O sistema promove a padronização dos dados, reduz redundâncias e melhora a eficiência dos processos administrativos, garantindo mais agilidade e confiabilidade no atendimento hospitalar. Além disso, está diretamente ligado ao Sistema de Controle de Veículos: no momento do cadastro, é gerado um QR Code contendo as informações do veículo do colaborador e o setor em que atua, permitindo a identificação rápida e segura no acesso às garagens do hospital."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/cadUnico.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Sistema de Cadastro Único</h3>
+                    </div>
+
                     <img src="assets/img/cadUnico.jpg" alt="Sistema de Cadastro Único" class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 5 -->
@@ -506,8 +654,17 @@
                     data-title="Sistema de Controle para Acesso de Veículos - Hospital Geral Roberto Santos"
                     data-description="Solução integrada para monitoramento e controle eficiente do acesso de veículos às dependências do hospital. Utilizando tecnologias como QR Code gerado no Sistema de Cadastro Único, o sistema identifica automaticamente colaboradores e setores associados aos veículos, garantindo segurança, agilidade e organização no trânsito interno das garagens hospitalares. Essa automação reduz o risco de acessos não autorizados e otimiza a gestão do fluxo veicular."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/veiculos.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Controle de Acesso de Veículos</h3>
+                    </div>
+
                     <img src="assets/img/veiculos.jpg" alt="Sistema de Controle de Acesso de Veículos"
                         class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 6 -->
@@ -515,7 +672,16 @@
                     onclick="openModal(this)" data-title="Sistema de Repositório - Hospital Geral Roberto Santos"
                     data-description="Desenvolvido para centralizar e preservar o conhecimento produzido no ambiente hospitalar, o Sistema de Repositório permite o armazenamento, organização e consulta de pesquisas, artigos científicos, trabalhos acadêmicos e materiais técnicos. Com uma interface intuitiva e categorização eficiente, a plataforma facilita o acesso à produção intelectual da instituição, promovendo a valorização da ciência, o incentivo à pesquisa e a disseminação do conhecimento entre profissionais da saúde."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/repositorio.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Sistema de Repositório</h3>
+                    </div>
+
                     <img src="assets/img/repositorio.jpg" alt="Sistema de Repositório" class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 7 -->
@@ -523,7 +689,16 @@
                     onclick="openModal(this)" data-title="Sistema de Nutrição - Hospital Geral Roberto Santos"
                     data-description="Plataforma desenvolvida para otimizar e organizar o planejamento nutricional hospitalar. Com ela, é possível registrar as informações do paciente e do acompanhante, especificar o tipo de dieta conforme prescrição médica, gerar e imprimir etiquetas personalizadas, além de acompanhar todo o processo de distribuição alimentar. O sistema contribui para maior precisão, rastreabilidade e agilidade no atendimento nutricional, garantindo segurança e eficiência na entrega das refeições."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/nutricao.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Sistema de Nutrição</h3>
+                    </div>
+
                     <img src="assets/img/nutricao.jpg" alt="Sistema de Nutrição" class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 8 -->
@@ -532,42 +707,78 @@
                     data-title="Site Institucional para Empresa de Serviços de Informática - OC Open Computadores"
                     data-description="Desenvolvido para apresentar a OC Open Computadores de maneira clara, profissional e acessível, o site institucional destaca os serviços de informática oferecidos, incluindo manutenção, suporte técnico, vendas de equipamentos e soluções personalizadas. Com design responsivo e navegação intuitiva, a plataforma facilita o contato com clientes e parceiros, reforçando a presença digital da empresa e transmitindo confiança e credibilidade no mercado de tecnologia."
                     data-tech="Tecnologias: WordPress" data-img="assets/img/openpc.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Site Institucional - OC Open</h3>
+                    </div>
+
                     <img src="assets/img/openpc.jpg" alt="Site Institucional - OC Open Computadores"
                         class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 9 -->
                 <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
                     onclick="openModal(this)" data-title="Site Institucional para Advogados e Escritórios de Advocacia"
-                    data-description="Desenvolvido com foco em credibilidade, presença digital e profissionalismo, o site institucional para advogados e escritórios de advocacia apresenta de forma clara e objetiva os serviços jurídicos oferecidos, áreas de atuação, currículo dos profissionais, canais de contato e conteúdo informativo. A estrutura é responsiva, moderna e pensada para transmitir confiança e autoridade no meio jurídico. Projetos já desenvolvidos para os advogados André Maia e André Maia Filho, com identidade visual personalizada e otimização para mecanismos de busca (SEO), reforçando a presença online e facilitando o contato com clientes e parceiros."
+                    data-description="Desenvolvido com foco em credibilidade, presença digital e profissionalismo, o site institucional para advogados e escritórios de advocacia apresenta de forma clara e objetiva os serviços jurídicos oferecidos, áreas de atuação, currículo dos profissionais, canais de contato e conteúdo informativo. A estrutura é responsiva, moderna e pensada para transmitir confiança e autoridade no meio jurídico."
                     data-tech="Tecnologias: WordPress, HTML, CSS e JavaScript" data-img="assets/img/advogado.jpg">
-                    <img src="assets/img/advogado.jpg"
-                        alt="Site Institucional para Advogados e Escritórios de Advocacia"
+
+                    <div class="portfolio-header">
+                        <h3>Site Institucional para Advocacia</h3>
+                    </div>
+
+                    <img src="assets/img/advogado.jpg" alt="Site Institucional para Advogados"
                         class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
                 <!-- Portfolio Item 10 -->
                 <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
                     onclick="openModal(this)" data-title="Site Institucional para Empresa de Tecnologia - R2R Tech"
-                    data-description="Site desenvolvido para apresentar a R2R Tech de forma moderna, dinâmica e alinhada ao setor de tecnologia. Com design responsivo, navegação intuitiva e foco na experiência do usuário, o site destaca os principais serviços e soluções oferecidos pela empresa, além de apresentar informações institucionais, diferenciais competitivos, canais de contato e portfólio. A estrutura foi pensada para reforçar a autoridade digital da marca, transmitir confiança e facilitar a conexão com potenciais clientes e parceiros, refletindo a inovação e o profissionalismo da R2R Tech no mercado tecnológico."
+                    data-description="Site desenvolvido para apresentar a R2R Tech de forma moderna, dinâmica e alinhada ao setor de tecnologia. Com design responsivo, navegação intuitiva e foco na experiência do usuário, o site destaca os principais serviços e soluções oferecidos pela empresa."
                     data-tech="Tecnologias: WordPress, HTML, CSS e JavaScript" data-img="assets/img/r2rtech.jpg">
+
+                    <div class="portfolio-header">
+                        <h3>Site Institucional - R2R Tech</h3>
+                    </div>
+
                     <img src="assets/img/r2rtech.jpg" alt="Site Institucional para Empresa de Tecnologia - R2R Tech"
                         class="w-full h-64 object-cover">
+
+                    <div class="portfolio-overlay">
+                        <span>Ver Projeto</span>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center">
-        <div class="bg-white rounded-lg overflow-hidden w-full max-w-2xl p-6 relative">
+    <!-- ========================= -->
+    <!-- MODAL MELHORADO -->
+    <!-- ========================= -->
+
+    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center px-4">
+
+        <div id="portfolioModalContent" class="modal-content w-full max-w-2xl p-6 relative overflow-hidden">
+
             <button onclick="closeModal()"
-                class="absolute top-2 right-2 text-blue-900 text-2xl font-bold">&times;</button>
-            <img id="modalImg" src="" alt="" class="w-full h-64 object-cover rounded mb-4">
-            <h3 id="modalTitle" class="text-2xl font-bold text-blue-900 mb-2"></h3>
-            <p id="modalDescription" class="text-gray-700 mb-4"></p>
-            <span id="modalTech" class="text-sm text-blue-600 font-medium"></span>
+                class="absolute top-4 right-4 text-purple-700 text-3xl font-bold hover:scale-110 transition">&times;</button>
+
+            <img id="modalImg" src="" alt="" class="w-full h-72 object-cover rounded-2xl mb-6 shadow-lg">
+
+            <h3 id="modalTitle" class="text-3xl font-bold text-purple-900 mb-4"></h3>
+
+            <p id="modalDescription" class="text-gray-700 mb-5 leading-relaxed"></p>
+
+            <span id="modalTech"
+                class="inline-block text-sm text-purple-700 font-bold bg-purple-100 px-4 py-2 rounded-full"></span>
         </div>
     </div>
 
@@ -1075,7 +1286,11 @@
             });
         </script>
 
-        <!-- Script -->
+
+        <!-- ========================= -->
+        <!-- SCRIPT COM ANIMAÇÃO -->
+        <!-- ========================= -->
+
         <script>
             function openModal(element) {
                 document.getElementById('modalTitle').textContent = element.dataset.title;
@@ -1083,19 +1298,40 @@
                 document.getElementById('modalTech').textContent = element.dataset.tech;
                 document.getElementById('modalImg').src = element.dataset.img;
 
-                document.getElementById('portfolioModal').classList.remove('hidden');
-                document.getElementById('portfolioModal').classList.add('flex');
+                const modal = document.getElementById('portfolioModal');
+                const content = document.getElementById('portfolioModalContent');
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                content.classList.remove('modal-exit');
+                content.classList.add('modal-enter');
             }
 
             function closeModal() {
-                document.getElementById('portfolioModal').classList.add('hidden');
-                document.getElementById('portfolioModal').classList.remove('flex');
+                const modal = document.getElementById('portfolioModal');
+                const content = document.getElementById('portfolioModalContent');
+
+                content.classList.remove('modal-enter');
+                content.classList.add('modal-exit');
+
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
             }
 
-            // Fechar modal ao clicar fora do conteúdo
+            // Fechar modal ao clicar fora
             window.addEventListener('click', function (e) {
                 const modal = document.getElementById('portfolioModal');
                 if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // ESC fecha modal
+            document.addEventListener('keydown', function (e) {
+                if (e.key === "Escape") {
                     closeModal();
                 }
             });
