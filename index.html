@@ -396,6 +396,222 @@
         ::-webkit-scrollbar-track {
             background: #f3e8ff;
         }
+
+        /* ===========================
+   CORREÇÕES MOBILE + MODAL RESPONSIVO
+   Adicione ao FINAL do seu <style>
+=========================== */
+
+        /* HERO MOBILE */
+        @media (max-width: 768px) {
+
+            /* Ajuste geral do hero */
+            .hero {
+                min-height: 100vh !important;
+                padding-top: 110px !important;
+                padding-bottom: 60px !important;
+            }
+
+            /* Título principal */
+            .hero h1 {
+                font-size: clamp(2.8rem, 14vw, 5rem) !important;
+                line-height: 0.95 !important;
+                text-align: center !important;
+                word-break: break-word;
+                letter-spacing: -2px !important;
+                padding: 0 10px;
+            }
+
+            /* Subtítulo */
+            .hero h2,
+            .hero p {
+                font-size: clamp(1.1rem, 6vw, 1.8rem) !important;
+                line-height: 1.4 !important;
+                text-align: center !important;
+                padding: 0 14px;
+            }
+
+            /* Botão orçamento */
+            .hero a,
+            .hero button {
+                width: 88% !important;
+                max-width: 340px;
+                margin: 0 auto !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.15rem !important;
+                padding: 16px 24px !important;
+                border-radius: 999px !important;
+            }
+
+            /* Navbar mobile */
+            nav {
+                padding-top: 12px !important;
+                padding-bottom: 12px !important;
+            }
+
+            nav .text-2xl,
+            nav .text-3xl {
+                font-size: 2rem !important;
+            }
+
+            /* Logo BGTECH */
+            nav a span,
+            nav a {
+                font-size: 1.7rem !important;
+            }
+
+            /* Cards portfólio */
+            .portfolio-header h3 {
+                font-size: 0.82rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .portfolio-item img {
+                height: 220px !important;
+            }
+
+            /* Modal geral */
+            #portfolioModal {
+                padding: 12px !important;
+                align-items: flex-start !important;
+                overflow-y: auto !important;
+            }
+
+            /* Conteúdo do modal */
+            #portfolioModal .modal-content {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                max-height: 90vh !important;
+                overflow-y: auto !important;
+                border-radius: 22px !important;
+                padding: 16px !important;
+            }
+
+            /* Imagem modal */
+            #modalImg {
+                height: auto !important;
+                max-height: 240px !important;
+                object-fit: cover;
+                border-radius: 18px !important;
+            }
+
+            /* Título modal */
+            #modalTitle {
+                font-size: 1.6rem !important;
+                line-height: 1.25 !important;
+                margin-top: 10px;
+                word-break: break-word;
+            }
+
+            /* Texto modal */
+            #modalDescription {
+                font-size: 1rem !important;
+                line-height: 1.8 !important;
+                max-height: none !important;
+                overflow: visible !important;
+                padding-bottom: 20px;
+            }
+
+            /* Tecnologias */
+            #modalTech {
+                display: block;
+                font-size: 0.9rem !important;
+                line-height: 1.5;
+                margin-top: 10px;
+            }
+
+            /* Botão fechar */
+            #portfolioModal button {
+                top: 12px !important;
+                right: 14px !important;
+                font-size: 2rem !important;
+                z-index: 50;
+            }
+
+            /* WhatsApp */
+            .whatsapp-float {
+                width: 58px !important;
+                height: 58px !important;
+                bottom: 18px !important;
+                right: 18px !important;
+            }
+
+            /* Voltar ao topo */
+            .back-to-top {
+                width: 52px !important;
+                height: 52px !important;
+                left: 18px !important;
+                bottom: 18px !important;
+            }
+        }
+
+        /* ===========================
+   EXTRA SMALL DEVICES
+=========================== */
+        @media (max-width: 480px) {
+
+            .hero h1 {
+                font-size: clamp(2.4rem, 16vw, 4rem) !important;
+            }
+
+            .hero h2,
+            .hero p {
+                font-size: clamp(1rem, 5.5vw, 1.4rem) !important;
+            }
+
+            #modalTitle {
+                font-size: 1.35rem !important;
+            }
+
+            #modalDescription {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+            }
+
+            .portfolio-header {
+                padding: 12px 12px !important;
+            }
+
+            .portfolio-header h3 {
+                font-size: 0.75rem !important;
+            }
+        }
+
+        /* ===========================
+   SCROLL INTERNO MAIS BONITO
+=========================== */
+        #portfolioModal .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #portfolioModal .modal-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(#7c3aed, #c084fc);
+            border-radius: 999px;
+        }
+
+        /* ===========================
+   MELHOR LEITURA PARA TEXTOS LONGOS
+=========================== */
+        #modalDescription {
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        /* ===========================
+   EVITA CORTE DE TEXTO EM QUALQUER TÍTULO
+=========================== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
     </style>
 </head>
 
@@ -579,7 +795,7 @@
                 <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
                     onclick="openModal(this)"
                     data-title="Sistema de Chamados para Maqueiros - Hospital Geral Roberto Santos"
-                    data-description="Desenvolvido exclusivamente para otimizar a logística interna do hospital..."
+                    data-description="Desenvolvido exclusivamente para otimizar a logística interna do hospital, o sistema permite o gerenciamento ágil e organizado dos chamados de transporte de pacientes. Com interface intuitiva e acessível em toda a rede interna, a solução proporciona mais eficiência, controle e agilidade no fluxo hospitalar, contribuindo diretamente para a qualidade do atendimento no Hospital Geral Roberto Santos."
                     data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/maqueiro.jpg">
 
                     <!-- Título superior -->
