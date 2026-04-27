@@ -8,189 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(168, 85, 247, 0.18), transparent 35%),
-                radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.15), transparent 35%),
-                linear-gradient(135deg, #ffffff 0%, #f6f2ff 40%, #eef4ff 100%);
-            color: #2d1b69;
-            overflow-x: hidden;
-        }
-
-        /* Partículas */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image:
-                radial-gradient(circle, rgba(168, 85, 247, 0.20) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
-            background-size: 60px 60px, 120px 120px;
-            animation: particlesMove 18s linear infinite;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        @keyframes particlesMove {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-120px);
-            }
-        }
-
-        /* Navbar futurista */
-        nav {
-            background: rgba(255, 255, 255, 0.55) !important;
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.25);
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
-        }
-
-        nav a,
-        nav i {
-            color: #5b21b6 !important;
-            font-weight: 600;
-        }
-
-        nav a:hover {
-            color: #a855f7 !important;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
-        }
-
-        /* Hero overlay */
-        .hero .absolute.bg-gradient-to-br {
-            background:
-                linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.40),
-                    rgba(168, 85, 247, 0.18),
-                    rgba(124, 58, 237, 0.22)) !important;
-            backdrop-filter: blur(3px);
-        }
-
-        /* Títulos */
-        h1,
-        h2,
-        h3,
-        h4 {
-            letter-spacing: -0.5px;
-        }
-
-        h1 {
-            background: linear-gradient(90deg, #ffffff, #d8b4fe, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(168, 85, 247, 0.35);
-        }
-
-        /* Botões */
-        a.bg-blue-500,
-        button,
-        .bg-blue-500 {
-            background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
-            border: none;
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.35);
-            transition: all 0.35s ease;
-        }
-
-        a.bg-blue-500:hover,
-        button:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(168, 85, 247, 0.45);
-        }
-
-        /* Cards futuristas */
-        .service-card,
-        .bg-white,
-        .portfolio-item,
-        .bg-blue-800,
-        .bg-gray-100 {
-            background: rgba(255, 255, 255, 0.50) !important;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(168, 85, 247, 0.18);
-            box-shadow:
-                0 8px 32px rgba(124, 58, 237, 0.10),
-                inset 0 0 0.5px rgba(255, 255, 255, 0.9);
-        }
-
-        .service-card,
-        .portfolio-item,
-        .bg-white {
-            border-radius: 24px !important;
-        }
-
-        .service-card:hover,
-        .portfolio-item:hover,
-        .bg-white:hover {
-            transform: translateY(-12px);
-            box-shadow:
-                0 20px 40px rgba(124, 58, 237, 0.18),
-                0 0 25px rgba(168, 85, 247, 0.15);
-        }
-
-        /* Seções */
-        section {
-            position: relative;
-        }
-
-        section::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 70%);
-            z-index: 0;
-            border-radius: 50%;
-        }
-
-        /* Inputs */
-        input,
-        textarea {
-            background: rgba(255, 255, 255, 0.55) !important;
-            border: 1px solid rgba(168, 85, 247, 0.25) !important;
-            color: #4c1d95 !important;
-            backdrop-filter: blur(12px);
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: rgba(91, 33, 182, 0.6);
-        }
-
-        input:focus,
-        textarea:focus {
-            box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.18) !important;
-        }
-
-        /* Footer */
-        footer,
-        #contact {
-            background:
-                linear-gradient(135deg,
-                    rgba(124, 58, 237, 0.92),
-                    rgba(168, 85, 247, 0.82),
-                    rgba(255, 255, 255, 0.15)) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        footer p,
-        footer a,
-        #contact p,
-        #contact h2,
-        #contact h3,
-        #contact h4,
-        #contact label {
-            color: white !important;
-        }
-
-        /* WhatsApp */
+        /* Custom CSS for animations and effects */
+        /* ===== BOTÃO WHATSAPP ===== */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -212,6 +31,11 @@
         .whatsapp-float:hover {
             transform: scale(1.15);
             box-shadow: 0 0 35px #25d366;
+        }
+
+        .whatsapp-float img {
+            width: 32px;
+            height: 32px;
         }
 
         .back-to-top {
@@ -243,49 +67,63 @@
             background-color: #555;
         }
 
-        /* Modal */
-        #portfolioModal .bg-white,
-        #modal .bg-white {
-            background: rgba(255, 255, 255, 0.72) !important;
-            backdrop-filter: blur(24px);
-            border-radius: 28px;
-            border: 1px solid rgba(168, 85, 247, 0.2);
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-        /* Logos clientes */
-        .client-logo div {
-            background: rgba(255, 255, 255, 0.6) !important;
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            border-radius: 18px;
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
         }
 
-        /* Glow lines */
-        .w-20.h-1 {
-            background: linear-gradient(90deg, #7c3aed, #d8b4fe) !important;
-            height: 4px !important;
-            border-radius: 999px;
-            box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+        .portfolio-overlay {
+            transition: all 0.3s ease;
         }
 
-        /* Mobile menu */
-        #mobile-menu {
-            background: rgba(255, 255, 255, 0.82) !important;
-            backdrop-filter: blur(18px);
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#7c3aed, #c084fc);
-            border-radius: 20px;
+        /* Animation for the hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f3e8ff;
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Animation delay classes */
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
@@ -791,7 +629,7 @@
                             Mensagem</button>
                     </form>
                 </div> -->
-                <!-- <div class="lg:w-1/2">
+                <div class="lg:w-1/2">
                     <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block mb-2 text-blue-200">Nome completo</label>
@@ -829,10 +667,10 @@
                             class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full cursor-not-allowed">Enviar
                             Mensagem</button>
                     </form>
-                </div> -->
+                </div>
 
-                <div style="width: 100%;">
-                    <div class="bg-purple-800 p-8 rounded-lg h-full">
+                <div class="lg:w-1/2">
+                    <div class="bg-blue-800 p-8 rounded-lg h-full">
                         <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
 
                         <div class="space-y-6">
