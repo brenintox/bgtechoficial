@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGTECH - Serviços de Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations and effects */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 3%;
+            /* Distância do botão do WhatsApp, para não sobrepor */
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #555;
+        }
+
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay {
+            transition: all 0.3s ease;
+        }
+
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        /* Animation for the hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Animation delay classes */
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-code text-blue-300 text-2xl"></i>
+                <a href="#" class="text-xl font-bold">BGTECH</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-blue-300 transition">Início</a>
+                <a href="#about" class="hover:text-blue-300 transition">Sobre</a>
+                <a href="#services" class="hover:text-blue-300 transition">Serviços</a>
+                <a href="#portfolio" class="hover:text-blue-300 transition">Portfólio</a>
+                <a href="#contact" class="hover:text-blue-300 transition">Contato</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-800 px-4 py-2">
+            <a href="#home" class="block py-2 hover:text-blue-300 transition">Início</a>
+            <a href="#about" class="block py-2 hover:text-blue-300 transition">Sobre</a>
+            <a href="#services" class="block py-2 hover:text-blue-300 transition">Serviços</a>
+            <a href="#portfolio" class="block py-2 hover:text-blue-300 transition">Portfólio</a>
+            <a href="#contact" class="block py-2 hover:text-blue-300 transition">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="hero min-h-screen relative flex items-center justify-center text-white pt-20 overflow-hidden">
+
+        <!-- Video Background -->
+        <!-- <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="assets/video/blueparticles3.mp4" type="video/mp4">
+        </video> -->
+
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="assets/video/BlueParticlesofc.mp4" type="video/mp4">
+        </video>
+
+        <!-- Gradient Overlay -->
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[rgba(0,40,85,0.9)] to-[rgba(0,20,50,0.9)] z-10">
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="container mx-auto px-4 text-center relative z-20">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fadeInUp" style="font-size: 80px;">BGTECH</h1>
+            <h2 class="text-2xl md:text-3xl font-light mb-8 animate-fadeInUp delay-100">Transformando ideias em Soluções
+                Digitais</h2>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fadeInUp delay-200" style="font-weight: bold;">
+                Sistemas Web Personalizados para Otimizar Processos e Impulsionar Resultados em sua Empresa.
+            </p>
+            <a href="https://wa.me/5571993431988?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es"
+                target="_blank"
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block animate-fadeInUp delay-300">Solicitar
+                Orçamento</a>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Sobre a BGTECH</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" style="font-weight: bold;">Especialistas em Desenvolvimento
+                    de Sites e Sistemas Web personalizados para empresas que buscam eficiência e inovação.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="assets/img/logoBGTECH.png" alt="Equipe BGTECH" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Nossa Missão</h3>
+                    <p class="text-gray-600 mb-6">Na BGTECH, nossa missão é desenvolver soluções tecnológicas que
+                        simplificam processos complexos, aumentam a produtividade e geram resultados tangíveis para
+                        nossos clientes.</p>
+
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Nossa Experiência</h3>
+                    <p class="text-gray-600 mb-6">Com anos de experiência no mercado, especializamo-nos em criar
+                        sistemas web sob medida para Hospitais, Clínicas, Escritórios de Advocacia e empresas que
+                        necessitam de ferramentas internas eficientes e seguras ou de um site Institucional.</p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-blue-50 px-4 py-2 rounded-full">
+                            <span class="text-blue-700 font-medium">+10 Projetos</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full">
+                            <span class="text-blue-700 font-medium">+4 Clientes</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full">
+                            <span class="text-blue-700 font-medium">100% Customizável</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Nossos Serviços</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Soluções tecnológicas personalizadas para atender às
+                    necessidades específicas do seu negócio.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Sites Responsivos</h3>
+                    <p class="text-gray-600">Desenvolvimento de websites modernos e responsivos que se adaptam a
+                        qualquer dispositivo, garantindo a melhor experiência para seus clientes.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Sistemas Web</h3>
+                    <p class="text-gray-600">Soluções Personalizadas para Gestão Interna, desde Sistemas de Agendamento
+                        para até Plataformas de Gestão Completas para Hospitais, Empresas
+                        Escritórios, Lojas, Hoteis e muito mais.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <!-- <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Integração Interna</h3>
+                    <p class="text-gray-600">Conectamos seus sistemas internos, criando uma infraestrutura tecnológica integrada que otimiza fluxos de trabalho e comunicação.</p>
+                </div> -->
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Consultoria & Suporte</h3>
+                    <p class="text-gray-600">Oferecemos Consultoria Especializada e Suporte Técnico contínuo para
+                        garantir que sua solução opere com máxima eficiência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Portfólio</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Alguns dos projetos que desenvolvemos para nossos clientes.
+                    (É só clicar em alguma imagem)
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)"
+                    data-title="Sistema de Chamados para Maqueiros - Hospital Geral Roberto Santos"
+                    data-description="Desenvolvido exclusivamente para otimizar a logística interna do hospital, o sistema permite o gerenciamento ágil e organizado dos chamados de transporte de pacientes. Com interface intuitiva e acessível em toda a rede interna, a solução proporciona mais eficiência, controle e agilidade no fluxo hospitalar, contribuindo diretamente para a qualidade do atendimento no Hospital Geral Roberto Santos."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/maqueiro.jpg">
+                    <img src="assets/img/maqueiro.jpg" alt="Sistema Chamados de Maqueiros"
+                        class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Sistema de Rouparia - Hospital Geral Roberto Santos"
+                    data-description="Sistema desenvolvido para gerenciar de forma eficiente o controle e a distribuição de roupas hospitalares e materiais de lavanderia. Com funcionalidades que facilitam o cadastro, o acompanhamento de entregas e o controle de estoque, a solução contribui para a organização e agilidade dos processos internos, garantindo a disponibilidade e qualidade dos insumos para o Hospital Geral Roberto Santos."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/rouparia.jpg">
+                    <img src="assets/img/rouparia.jpg" alt="Sistema de Rouparia" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Intranet Corporativa - Hospital Geral Roberto Santos"
+                    data-description="Plataforma interna para comunicação e gestão de documentos desenvolvida para o Hospital Geral Roberto Santos."
+                    data-tech="Tecnologias: WordPress" data-img="assets/img/intranet.jpg">
+                    <img src="assets/img/intranet.jpg" alt="Intranet Corporativa" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Sistema de Cadastro Único - Hospital Geral Roberto Santos"
+                    data-description="Plataforma integrada para o cadastro e gerenciamento centralizado de pacientes e colaboradores, facilitando o acesso rápido e seguro às informações essenciais. O sistema promove a padronização dos dados, reduz redundâncias e melhora a eficiência dos processos administrativos, garantindo mais agilidade e confiabilidade no atendimento hospitalar. Além disso, está diretamente ligado ao Sistema de Controle de Veículos: no momento do cadastro, é gerado um QR Code contendo as informações do veículo do colaborador e o setor em que atua, permitindo a identificação rápida e segura no acesso às garagens do hospital."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/cadUnico.jpg">
+                    <img src="assets/img/cadUnico.jpg" alt="Sistema de Cadastro Único" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)"
+                    data-title="Sistema de Controle para Acesso de Veículos - Hospital Geral Roberto Santos"
+                    data-description="Solução integrada para monitoramento e controle eficiente do acesso de veículos às dependências do hospital. Utilizando tecnologias como QR Code gerado no Sistema de Cadastro Único, o sistema identifica automaticamente colaboradores e setores associados aos veículos, garantindo segurança, agilidade e organização no trânsito interno das garagens hospitalares. Essa automação reduz o risco de acessos não autorizados e otimiza a gestão do fluxo veicular."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/veiculos.jpg">
+                    <img src="assets/img/veiculos.jpg" alt="Sistema de Controle de Acesso de Veículos"
+                        class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Sistema de Repositório - Hospital Geral Roberto Santos"
+                    data-description="Desenvolvido para centralizar e preservar o conhecimento produzido no ambiente hospitalar, o Sistema de Repositório permite o armazenamento, organização e consulta de pesquisas, artigos científicos, trabalhos acadêmicos e materiais técnicos. Com uma interface intuitiva e categorização eficiente, a plataforma facilita o acesso à produção intelectual da instituição, promovendo a valorização da ciência, o incentivo à pesquisa e a disseminação do conhecimento entre profissionais da saúde."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/repositorio.jpg">
+                    <img src="assets/img/repositorio.jpg" alt="Sistema de Repositório" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 7 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Sistema de Nutrição - Hospital Geral Roberto Santos"
+                    data-description="Plataforma desenvolvida para otimizar e organizar o planejamento nutricional hospitalar. Com ela, é possível registrar as informações do paciente e do acompanhante, especificar o tipo de dieta conforme prescrição médica, gerar e imprimir etiquetas personalizadas, além de acompanhar todo o processo de distribuição alimentar. O sistema contribui para maior precisão, rastreabilidade e agilidade no atendimento nutricional, garantindo segurança e eficiência na entrega das refeições."
+                    data-tech="Tecnologias: PHP, JavaScript, HTML, CSS, MySQL" data-img="assets/img/nutricao.jpg">
+                    <img src="assets/img/nutricao.jpg" alt="Sistema de Nutrição" class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 8 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)"
+                    data-title="Site Institucional para Empresa de Serviços de Informática - OC Open Computadores"
+                    data-description="Desenvolvido para apresentar a OC Open Computadores de maneira clara, profissional e acessível, o site institucional destaca os serviços de informática oferecidos, incluindo manutenção, suporte técnico, vendas de equipamentos e soluções personalizadas. Com design responsivo e navegação intuitiva, a plataforma facilita o contato com clientes e parceiros, reforçando a presença digital da empresa e transmitindo confiança e credibilidade no mercado de tecnologia."
+                    data-tech="Tecnologias: WordPress" data-img="assets/img/openpc.jpg">
+                    <img src="assets/img/openpc.jpg" alt="Site Institucional - OC Open Computadores"
+                        class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 9 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Site Institucional para Advogados e Escritórios de Advocacia"
+                    data-description="Desenvolvido com foco em credibilidade, presença digital e profissionalismo, o site institucional para advogados e escritórios de advocacia apresenta de forma clara e objetiva os serviços jurídicos oferecidos, áreas de atuação, currículo dos profissionais, canais de contato e conteúdo informativo. A estrutura é responsiva, moderna e pensada para transmitir confiança e autoridade no meio jurídico. Projetos já desenvolvidos para os advogados André Maia e André Maia Filho, com identidade visual personalizada e otimização para mecanismos de busca (SEO), reforçando a presença online e facilitando o contato com clientes e parceiros."
+                    data-tech="Tecnologias: WordPress, HTML, CSS e JavaScript" data-img="assets/img/advogado.jpg">
+                    <img src="assets/img/advogado.jpg"
+                        alt="Site Institucional para Advogados e Escritórios de Advocacia"
+                        class="w-full h-64 object-cover">
+                </div>
+
+                <!-- Portfolio Item 10 -->
+                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    onclick="openModal(this)" data-title="Site Institucional para Empresa de Tecnologia - R2R Tech"
+                    data-description="Site desenvolvido para apresentar a R2R Tech de forma moderna, dinâmica e alinhada ao setor de tecnologia. Com design responsivo, navegação intuitiva e foco na experiência do usuário, o site destaca os principais serviços e soluções oferecidos pela empresa, além de apresentar informações institucionais, diferenciais competitivos, canais de contato e portfólio. A estrutura foi pensada para reforçar a autoridade digital da marca, transmitir confiança e facilitar a conexão com potenciais clientes e parceiros, refletindo a inovação e o profissionalismo da R2R Tech no mercado tecnológico."
+                    data-tech="Tecnologias: WordPress, HTML, CSS e JavaScript" data-img="assets/img/r2rtech.jpg">
+                    <img src="assets/img/r2rtech.jpg" alt="Site Institucional para Empresa de Tecnologia - R2R Tech"
+                        class="w-full h-64 object-cover">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="portfolioModal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg overflow-hidden w-full max-w-2xl p-6 relative">
+            <button onclick="closeModal()"
+                class="absolute top-2 right-2 text-blue-900 text-2xl font-bold">&times;</button>
+            <img id="modalImg" src="" alt="" class="w-full h-64 object-cover rounded mb-4">
+            <h3 id="modalTitle" class="text-2xl font-bold text-blue-900 mb-2"></h3>
+            <p id="modalDescription" class="text-gray-700 mb-4"></p>
+            <span id="modalTech" class="text-sm text-blue-600 font-medium"></span>
+        </div>
+    </div>
+
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Depoimentos</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">O que nossos clientes dizem sobre nossos serviços.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"A parceria com a BGTECH foi fundamental para a modernização e
+                        eficiência dos processos internos do Hospital Geral Roberto Santos.
+                        Com a implementação dos sistemas de Chamados para Maqueiros, Rouparia, Cadastro Único, Controle
+                        de Acesso para Veículos, Repositório, Nutrição e a melhoria
+                        significativa da nossa Intranet, conseguimos otimizar rotinas, integrar setores e garantir mais
+                        agilidade no atendimento hospitalar. A competência técnica,
+                        o compromisso e a visão estratégica de Breno fizeram toda a diferença. Hoje temos soluções
+                        digitais realmente alinhadas às nossas necessidades e pretendemos
+                        criar ainda mais soluções contando com a ajuda de Breno."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                            HN</div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Hudson Nanine</h4>
+                            <p class="text-gray-500 text-sm">Coordenador de T.I - Hospital Geral Roberto Santos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"A BGTECH superou todas as minhas expectativas na criação do meu site
+                        institucional.
+                        Com um layout moderno, navegação intuitiva e excelente apresentação dos nossos serviços,
+                        conseguimos transmitir credibilidade e profissionalismo aos
+                        nossos clientes desde o primeiro acesso. A equipe foi ágil, atenciosa e trouxe soluções sob
+                        medida para o setor jurídico. Sem dúvidas, uma parceria que elevou
+                        a nossa presença digital."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                            AM</div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">André Maia</h4>
+                            <p class="text-gray-500 text-sm">Advogado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Ter o site da R2R Tech desenvolvido pela BGTECH foi uma experiência
+                        excelente. Desde o primeiro contato,
+                        o Desenvolvedor e dono da empresa, o Breno Guedes, demonstrou total domínio técnico, compromisso
+                        com prazos e atenção aos detalhes. O resultado final superou nossas expectativas:
+                        um site moderno, funcional e com a cara da nossa empresa. Hoje, temos uma presença online
+                        profissional e estratégica graças à parceria com a BGTECH."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                            RB</div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Ricardo Barbosa</h4>
+                            <p class="text-gray-500 text-sm">Sócio Proprietário - R2R Tech</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"Escolher a BGTECH para desenvolver o site da OC Open Computadores foi
+                        uma decisão acertada. O resultado final refletiu exatamente a
+                        identidade da nossa empresa: tecnologia, confiança e proximidade com o cliente. A equipe
+                        entendeu nossas necessidades desde o início e entregou um site moderno,
+                        responsivo e com ótima performance. Hoje, temos uma presença online profissional que valoriza
+                        ainda mais os nossos serviços."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="bg-blue-100 text-blue-800 rounded-full w-12 h-12 flex items-center justify-center font-bold mr-4">
+                            M</div>
+                        <div>
+                            <h4 class="font-bold text-blue-900">Marcos</h4>
+                            <p class="text-gray-500 text-sm">Proprietário - OC Open Computadores</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Clientes Atendidos</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Algumas das empresas que confiaram em nossos serviços.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="client-logo">
+                    <div class="bg-gray-100 p-4 rounded-lg w-42 h-20 flex items-center justify-center">
+                        <span class="text-gray-700 font-bold">Hospital Geral Roberto Santos</span>
+                    </div>
+                </div>
+
+                <div class="client-logo">
+                    <div class="bg-gray-100 p-4 rounded-lg w-35 h-20 flex items-center justify-center">
+                        <span class="text-gray-700 font-bold">OC Open Computadores</span>
+                    </div>
+                </div>
+
+                <div class="client-logo">
+                    <div class="bg-gray-100 p-4 rounded-lg w-32 h-20 flex items-center justify-center">
+                        <span class="text-gray-700 font-bold">R2R Tech</span>
+                    </div>
+                </div>
+
+                <div class="client-logo">
+                    <div class="bg-gray-100 p-4 rounded-lg w-42 h-20 flex items-center justify-center">
+                        <span class="text-gray-700 font-bold">André Maia - Advocacia Imobiliária</span>
+                    </div>
+                </div>
+
+                <div class="client-logo">
+                    <div class="bg-gray-100 p-4 rounded-lg w-42 h-20 flex items-center justify-center">
+                        <span class="text-gray-700 font-bold">André Maia Filho - Advogado de Defesa Criminal</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Fale Conosco</h2>
+                <div class="w-20 h-1 bg-blue-300 mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-blue-200">Pronto para transformar sua ideia em realidade? Entre em
+                    contato e vamos conversar sobre seu projeto.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- <div class="lg:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-blue-200">Nome completo</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block mb-2 text-blue-200">E-mail</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block mb-2 text-blue-200">Telefone</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block mb-2 text-blue-200">Mensagem</label>
+                            <textarea id="message" name="message" rows="5"
+                                class="w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full">Enviar
+                            Mensagem</button>
+                    </form>
+                </div> -->
+                <div class="lg:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-blue-200">Nome completo</label>
+                            <input type="text" id="name" name="name"
+                                class="dev-field w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-not-allowed"
+                                readonly
+                                placeholder="Em Desenvolvimento (Ainda não é possível nos enviar um e-mail, mas pode nos chamar no WhatsApp que respondemos o quanto antes.)">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block mb-2 text-blue-200">E-mail</label>
+                            <input type="email" id="email" name="email"
+                                class="dev-field w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-not-allowed"
+                                readonly
+                                placeholder="Em Desenvolvimento (Ainda não é possível nos enviar um e-mail, mas pode nos chamar no WhatsApp que respondemos o quanto antes.)">
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block mb-2 text-blue-200">Telefone</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="dev-field w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-not-allowed"
+                                readonly
+                                placeholder="Em Desenvolvimento (Ainda não é possível nos enviar um e-mail, mas pode nos chamar no WhatsApp que respondemos o quanto antes.)">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block mb-2 text-blue-200">Mensagem</label>
+                            <textarea id="message" name="message" rows="5"
+                                class="dev-field w-full px-4 py-3 rounded-lg bg-blue-800 border border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-not-allowed"
+                                readonly
+                                placeholder="Em Desenvolvimento (Ainda não é possível nos enviar um e-mail, mas pode nos chamar no WhatsApp que respondemos o quanto antes.)"></textarea>
+                        </div>
+
+                        <button type="button" id="dev-alert"
+                            class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 w-full cursor-not-allowed">Enviar
+                            Mensagem</button>
+                    </form>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-blue-800 p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+
+                        <div class="space-y-6">
+                            <!-- <div class="flex items-start">
+                                <div class="text-blue-300 text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Endereço</h4>
+                                    <p class="text-blue-200">Av. Tecnologia, 1234 - Sala 501<br>Centro, São Paulo - SP</p>
+                                </div>
+                            </div> -->
+
+                            <div class="flex items-start">
+                                <div class="text-blue-300 text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Telefone</h4>
+                                    <p class="text-blue-200">(71) 99343-1988</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-blue-300 text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">E-mail</h4>
+                                    <p class="text-blue-200">bgtechofc@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-blue-300 text-xl mr-4 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Horário de Atendimento</h4>
+                                    <p class="text-blue-200">Segunda a Sexta: 9h às 18h</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <h4 class="font-bold mb-4">Redes Sociais</h4>
+                                <div class="flex space-x-4">
+                                    <!-- <a href="#" class="text-blue-300 hover:text-white text-2xl transition">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" class="text-blue-300 hover:text-white text-2xl transition">
+                                        <i class="fab fa-facebook"></i>
+                                    </a> -->
+                                    <a href="#contato"
+                                        class="text-blue-300 hover:text-white text-2xl transition cursor-not-allowed">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://wa.me/5571993431988?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es"
+                                        target="_blank" class="text-blue-300 hover:text-white text-2xl transition">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-code text-blue-300 text-2xl"></i>
+                        <span class="text-xl font-bold">BGTECH</span>
+                    </div>
+                    <p class="text-blue-300 max-w-md">Especialistas em Desenvolvimento de Sistemas Web Personalizados
+                        para Empresas que buscam Eficiência e Inovação.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Links Rápidos</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-blue-300 hover:text-white transition">Início</a></li>
+                            <li><a href="#about" class="text-blue-300 hover:text-white transition">Sobre</a></li>
+                            <li><a href="#services" class="text-blue-300 hover:text-white transition">Serviços</a></li>
+                            <li><a href="#portfolio" class="text-blue-300 hover:text-white transition">Portfólio</a>
+                            </li>
+                            <li><a href="#contact" class="text-blue-300 hover:text-white transition">Contato</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- <div>
+                        <h4 class="font-bold text-lg mb-4">Serviços</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-blue-300 hover:text-white transition">Sites Responsivos</a></li>
+                            <li><a href="#" class="text-blue-300 hover:text-white transition">Sistemas Web</a></li>
+                            <li><a href="#" class="text-blue-300 hover:text-white transition">Integração Interna</a></li>
+                            <li><a href="#" class="text-blue-300 hover:text-white transition">Consultoria</a></li>
+                            <li><a href="#" class="text-blue-300 hover:text-white transition">Suporte</a></li>
+                        </ul>
+                    </div> -->
+
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Contato</h4>
+                        <ul class="space-y-2">
+                            <li class="text-blue-300">bgtechofc@gmail.com</li>
+                            <li class="text-blue-300">(71) 99343-1988</li>
+                            <li class="text-blue-300">Salvador - BA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-blue-300 mb-4 md:mb-0">© 2025 BGTECH - Serviços de Tecnologia. Todos os direitos
+                    reservados.</p>
+                <!-- Links para abrir os modais -->
+                <div class="flex space-x-6">
+                    <a class="text-blue-300 hover:text-white transition cursor-pointer"
+                        onclick="openTermosModal('termos')">Termos de Serviço</a>
+                    <a class="text-blue-300 hover:text-white transition cursor-pointer"
+                        onclick="openTermosModal('privacidade')">Política de Privacidade</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-3xl w-full max-h-[80vh] overflow-y-auto p-6 relative">
+            <button onclick="closeTermosModal()"
+                class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 font-bold text-xl">&times;</button>
+            <h2 id="modal-title" class="text-2xl font-bold mb-4 text-blue-900"></h2>
+            <div id="modal-content" class="text-gray-800 whitespace-pre-line"></div>
+        </div>
+    </div>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5571993431988?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es"
+        target="_blank" rel="noopener noreferrer" aria-label="Fale conosco no WhatsApp" class="whatsapp-float">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+    </a>
+
+    <!-- Botão Back to Top -->
+    <button id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo" class="back-to-top">⬆️</button>
+
+    <!-- Back to Top Button -->
+    <!-- <button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button> -->
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md mx-4">
+            <div class="text-green-500 text-5xl mb-4 text-center">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-center mb-4">Mensagem Enviada!</h3>
+            <p class="text-gray-600 text-center mb-6">Obrigado por entrar em contato. Retornaremos sua mensagem o mais
+                breve possível.</p>
+            <button id="close-modal"
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full transition w-full">Fechar</button>
+        </div>
+
+        <script>
+            const textos = {
+                termos: {
+                    title: "Termos de Serviço",
+                    content: `Bem-vindo à BGTECH - Serviços de Tecnologia.
+        
+        Ao utilizar nossos serviços e plataformas, você concorda com os seguintes termos:
+        
+        1. Uso do Serviço
+        Nossos sistemas e sites são fornecidos para uso interno e comercial conforme especificado. É proibida a utilização para fins ilegais ou não autorizados.
+        
+        2. Responsabilidade
+        A BGTECH não se responsabiliza por danos indiretos, incidentais ou consequentes decorrentes do uso dos serviços.
+        
+        3. Modificações
+        Reservamo-nos o direito de alterar estes termos a qualquer momento, mediante notificação aos usuários.
+        
+        4. Propriedade Intelectual
+        Todo conteúdo, código e design desenvolvido pela BGTECH são protegidos por direitos autorais e não podem ser copiados sem autorização.
+        
+        Para mais informações, entre em contato conosco.
+        
+        Obrigado por escolher a BGTECH!`
+                },
+                privacidade: {
+                    title: "Política de Privacidade",
+                    content: `A BGTECH valoriza a sua privacidade e se compromete a proteger seus dados pessoais.
+        
+        1. Coleta de Dados
+        Coletamos apenas os dados necessários para fornecer nossos serviços, como nome, e-mail e informações relacionadas aos sistemas desenvolvidos.
+        
+        2. Uso dos Dados
+        Seus dados são usados exclusivamente para fins de atendimento, suporte e melhoria dos nossos sistemas.
+        
+        3. Compartilhamento
+        Não compartilhamos suas informações pessoais com terceiros sem seu consentimento, exceto quando exigido por lei.
+        
+        4. Segurança
+        Implementamos medidas de segurança para proteger seus dados contra acesso não autorizado, alteração ou divulgação.
+        
+        5. Direitos do Usuário
+        Você pode solicitar acesso, correção ou exclusão de seus dados a qualquer momento.
+        
+        Para dúvidas ou solicitações, entre em contato conosco.
+        
+        Agradecemos a sua confiança na BGTECH!`
+                }
+            };
+
+            function openTermosModal(tipo) {
+                const modal = document.getElementById('modal');
+                const title = document.getElementById('modal-title');
+                const content = document.getElementById('modal-content');
+
+                title.textContent = textos[tipo].title;
+                content.textContent = textos[tipo].content;
+
+                modal.classList.remove('hidden');
+            }
+
+            function closeTermosModal() {
+                const modal = document.getElementById('modal');
+                modal.classList.add('hidden');
+            }
+
+            // Fecha o modal ao clicar fora do conteúdo
+            document.getElementById('modal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeTermosModal();
+                }
+            });
+        </script>
+
+        <!-- Script -->
+        <script>
+            function openModal(element) {
+                document.getElementById('modalTitle').textContent = element.dataset.title;
+                document.getElementById('modalDescription').textContent = element.dataset.description;
+                document.getElementById('modalTech').textContent = element.dataset.tech;
+                document.getElementById('modalImg').src = element.dataset.img;
+
+                document.getElementById('portfolioModal').classList.remove('hidden');
+                document.getElementById('portfolioModal').classList.add('flex');
+            }
+
+            function closeModal() {
+                document.getElementById('portfolioModal').classList.add('hidden');
+                document.getElementById('portfolioModal').classList.remove('flex');
+            }
+
+            // Fechar modal ao clicar fora do conteúdo
+            window.addEventListener('click', function (e) {
+                const modal = document.getElementById('portfolioModal');
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        </script>
+
+        <script>
+            document.getElementById('dev-alert').addEventListener('click', function () {
+                alert('Esta funcionalidade está em desenvolvimento.');
+            });
+        </script>
+
+
+        <script>
+            const bgVideo = document.querySelector('video');
+
+            bgVideo.addEventListener('ended', function () {
+                this.currentTime = 0;
+                this.play();
+            });
+        </script>
+
+        <script>
+            // Mostrar botão quando a página for rolada para baixo 200px
+            window.addEventListener('scroll', () => {
+                const btn = document.getElementById('backToTop');
+                if (window.scrollY > 200) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            });
+
+            // Scroll suave ao topo ao clicar no botão
+            document.getElementById('backToTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        </script>
+
+        <script>
+            // Seleciona botão e menu
+            const btn = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        </script>
+
+        <script>
+            setInterval(() => {
+                location.reload();
+            }, 80000); // 80 segundos
+        </script>
+</body>
+
+</html>
